@@ -15,17 +15,7 @@
 #
 # Помните, что у вас есть числа, которые могут не соответствовать заданному условию.
 # В этом случае необходимо вывести соответствующее сообщение
-while True:
-    print("Введите числа через пробел")
-    nums = list(map(int, input().split()))
-    if len(nums) > 1:
-        print("Введите любое число")
-        n = int(input())
-        break
-    else:
-        print("Вы ввели только одно число")
 
-nums.append(n)
 
 
 def merge_sort(L):
@@ -78,9 +68,21 @@ def binary_search(array, element, left, right):
     else:
         return binary_search(array, element, middle + 1, right)
 
-
+while True:
+    print("Введите числа через пробел")
+    try:
+        nums = list(map(int, input().split()))
+    except ValueError:
+        print("Вы ввели не число. Введите число.")
+        nums = list(map(int, input().split()))
+    if len(nums) > 1:
+        print("Введите любое число")
+        n = int(input())
+        break
+    else:
+        print("Вы ввели только одно число")
+print('Сортировка списка по возрастанию элементов в нем')
+print(merge_sort(nums))
+nums.append(n)
 sorted = merge_sort(nums)
-# print(sorted)
-# print(len(sorted))
-# print(sorted.index(n))
 print(binary_search(sorted, n, 0, len(sorted)-1))
